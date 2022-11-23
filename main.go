@@ -4,22 +4,15 @@ import (
 	"fmt"
 	"net/http"
 
+	"go_learn/routes"
+
 	"github.com/gorilla/mux"
 )
 
 func main() {
-
-	// On Terminal/Command Propt
-	fmt.Println("Hello World!")
-
-	// On http (API)
 	r := mux.NewRouter()
 
-	r.HandleFunc("/", func (w http.ResponseWriter, r *http.Request){
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("Hello World"))
-	}).Methods("GET")
+	routes.RouteInit(r.PathPrefix("/api/v1").Subrouter())
 
 	fmt.Println("server running localhost:5000")
 	http.ListenAndServe("localhost:5000", r)
