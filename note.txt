@@ -1,2 +1,43 @@
 1 . CRUD TODO API
 2. TODO ROUTING
+
+Models
+struct atau blueprint untuk migrasi ke database
+/models
+//user.go
+
+Auto Migrate
+mengatur migrasi dari model ke database secara auto
+/database
+//migration.go
+
+Connection
+mengatur pengkoneksian ke database
+>>> root:@tcp(127.0.0.1:3306)/dumbmerch
+/pkg
+//mysql
+///mysql.go
+
+Data Transfer Object (DTO)
+A data transfer object (DTO) is an object that carries data between processes. You can use this technique to facilitate communication between two systems (like an API and your server) without potentially exposing sensitive information.
+/dto
+//result
+///result.go
+//users
+///user_request.go
+///user_response.go
+
+Fetching Query with Gorm
+melakukan fetching query ke database
+/repositories
+//users.go
+
+Handlers
+sejenis controller
+yang mengatur response dan request , serta pengkoneksian database
+/handlers
+//users.go
+
+Routes
+end point yang mengarahkan ke handlers/controller
+

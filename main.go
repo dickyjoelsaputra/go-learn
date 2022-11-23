@@ -2,14 +2,21 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-
+	"go_learn/database"
+	"go_learn/pkg/mysql"
 	"go_learn/routes"
+	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
+	// initial DB
+	mysql.DatabaseInit()
+
+	// run migration
+	database.RunMigration()
+
 	r := mux.NewRouter()
 
 	routes.RouteInit(r.PathPrefix("/api/v1").Subrouter())
