@@ -41,3 +41,38 @@ yang mengatur response dan request , serta pengkoneksian database
 Routes
 end point yang mengarahkan ke handlers/controller
 
+
+
+
+Find User all data using Find method
+Get User data by ID using First method
+Add User data using Create method
+Update User data using Save method
+
+
+
+// `User` belongs to `Company`, `CompanyID` is the foreign key
+type User struct {
+  gorm.Model
+  Name      string
+  CompanyID int
+  Company   Company `gorm:"foreignKey:CompanyRefer"`
+  // use CompanyRefer as foreign key
+}
+
+type Company struct {
+  ID   int
+  Name string
+}
+
+// User has one CreditCard, UserID is the foreign key
+type User struct {
+  gorm.Model
+  CreditCard CreditCard
+}
+
+type CreditCard struct {
+  gorm.Model
+  Number string
+  UserID uint
+}
